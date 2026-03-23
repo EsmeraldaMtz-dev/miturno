@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.miturno</groupId>
-	<artifactId>queue-service</artifactId>
+	<artifactId>appointment-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>queue-service</name>
+	<name>appointment-service</name>
 	<description>Aplicación para creacion y manejo de turnos en sucursales. </description>
 	<url/>
 	<licenses>
