@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name= "clients")
 @Data
-@AllArgsContructor
-@NoArgsConsstrunctor
+@AllArgsConstructor
+@NoArgsConstrunctor
 @Builder
 public class Client {
     @Id
