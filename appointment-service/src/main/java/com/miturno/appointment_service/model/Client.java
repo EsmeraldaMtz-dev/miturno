@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 @Table(name= "clients")
 @Data
 @AllArgsConstructor
-@NoArgsConstrunctor
+@NoArgsConstructor
 @Builder
 public class Client {
     @Id
