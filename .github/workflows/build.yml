@@ -18,6 +18,7 @@ jobs:
         with:
           java-version: '25'
           distribution: 'temurin'
+          cache: 'maven'
 
       - name: Build appointment-service
         working-directory: appointment-service
@@ -31,6 +32,7 @@ jobs:
         with:
           java-version: '25'
           distribution: 'temurin'
+          cache: 'maven'
       - name: Build qr-service
         working-directory: qr-service
         run: ./mvnw clean package -DskipTests
@@ -43,6 +45,7 @@ jobs:
         with:
           java-version: '25'
           distribution: 'temurin'
+          cache: 'maven'
       - name: Build notification-service
         working-directory: notification-service
-        run: ./mvnw clean
+        run: ./mvnw clean package -DskipTests
