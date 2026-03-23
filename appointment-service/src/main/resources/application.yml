@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: queue-service
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  datasource:
+    url: jdbc:postgresql://localhost:5432/miturno-db
+    username: admin
+    password: secret123
+  jpa:
+    hibernate:
+      ddl-auto: update
