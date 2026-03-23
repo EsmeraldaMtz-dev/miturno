@@ -3,12 +3,17 @@ name: Build and Test
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'appointment-service/**'
+      - 'qr-service/**'
+      - 'notification-service/**'
   pull_request:
     branches: [ main ]
 
 jobs:
   build-appointment-service:
     runs-on: ubuntu-latest
+    if: contains(github.event.commits[0].modified, 'appointment-service') || contains(github.event.commits[0].added, 'appointment-service')
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -26,6 +31,7 @@ jobs:
 
   build-qr-service:
     runs-on: ubuntu-latest
+    if: contains(github.event.commits[0].modified, 'qr-service') || contains(github.event.commits[0].added, 'qr-service')
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -39,6 +45,7 @@ jobs:
 
   build-notification-service:
     runs-on: ubuntu-latest
+    if: contains(github.event.commits[0].modified, 'notification-service') || contains(github.event.commits[0].added, 'notification-service')
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
