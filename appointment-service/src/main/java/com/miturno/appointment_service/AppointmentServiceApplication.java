@@ -1,13 +1,13 @@
-package com.miturno.queue_service;
+package com.miturno.appointment_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class QueueServiceApplication {
+public class AppointmentServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(QueueServiceApplication.class, args);
+		SpringApplication.run(AppointmentServiceApplication.class, args);
 	}
 
 }
