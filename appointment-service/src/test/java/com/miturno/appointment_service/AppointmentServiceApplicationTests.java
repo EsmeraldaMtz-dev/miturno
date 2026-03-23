@@ -1,10 +1,10 @@
-package com.miturno.queue_service;
+package com.miturno.appointment_service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class QueueServiceApplicationTests {
+class AppointmentServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: queue-service
+    name: appointment-service
   rabbitmq:
     host: localhost
     port: 5672

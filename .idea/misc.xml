@@ -5,7 +5,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/qr-service/pom.xml" />
-        <option value="$PROJECT_DIR$/queue-service/pom.xml" />
+        <option value="$PROJECT_DIR$/appointment-service/pom.xml" />
         <option value="$PROJECT_DIR$/nottification-service/pom.xml" />
       </list>
     </option>
