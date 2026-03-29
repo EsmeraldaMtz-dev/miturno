@@ -1,3 +1,5 @@
+package com.miturno.appointment_service.model;
+
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
@@ -33,10 +35,6 @@ public class Client {
 
     @Column(nullable = false)
     private boolean active;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(nullable = false, name = "user_id")
-    private User user;
 
     enum Type { STANDARD, PREMIUM }
 
