@@ -3,35 +3,48 @@ name: Build and Test
 on:
   push:
     branches: [ main ]
-    paths:
-      - 'appointment-service/**'
-      - 'qr-service/**'
-      - 'notification-service/**'
   pull_request:
     branches: [ main ]
 
 jobs:
-  build-appointment-service:
+  changes:
     runs-on: ubuntu-latest
-    if: contains(github.event.commits[0].modified, 'appointment-service') || contains(github.event.commits[0].added, 'appointment-service')
+    outputs:
+      appointment-service: ${{ steps.filter.outputs.appointment-service }}
+      qr-service: ${{ steps.filter.outputs.qr-service }}
+      notification-service: ${{ steps.filter.outputs.notification-service }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            appointment-service:
+              - 'appointment-service/**'
+            qr-service:
+              - 'qr-service/**'
+            notification-service:
+              - 'notification-service/**'
 
-      - name: Set up Java 25
-        uses: actions/setup-java@v4
+  build-appointment-service:
+    needs: changes
+    if: ${{ needs.changes.outputs.appointment-service == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
         with:
           java-version: '25'
           distribution: 'temurin'
           cache: 'maven'
-
       - name: Build appointment-service
         working-directory: appointment-service
         run: ./mvnw clean package -DskipTests
 
   build-qr-service:
+    needs: changes
+    if: ${{ needs.changes.outputs.qr-service == 'true' }}
     runs-on: ubuntu-latest
-    if: contains(github.event.commits[0].modified, 'qr-service') || contains(github.event.commits[0].added, 'qr-service')
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -44,8 +57,9 @@ jobs:
         run: ./mvnw clean package -DskipTests
 
   build-notification-service:
+    needs: changes
+    if: ${{ needs.changes.outputs.notification-service == 'true' }}
     runs-on: ubuntu-latest
-    if: contains(github.event.commits[0].modified, 'notification-service') || contains(github.event.commits[0].added, 'notification-service')
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
